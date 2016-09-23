@@ -36,30 +36,30 @@ In order to complete this exercise you will need to import the data from our pre
 5.	Use a new or an existing Google Account to sign up for Google's cloud services. Using the configuration file provided by the instructor (forthcoming), configure a virtual machine (VM) within Google Compute Engine (GCE) to host your web application. Configure the firewall, webserver and upload your web application. Test your VM instance to verify that you can view your site from your home network and from CSUF's network. Submit the contents of FirstnameLastnameSiteEnv to the course drop box and complete the online form (forthcoming) with the URL of your Django site (this is the IP of your GCE VM).  
 
 6.	Prepare your application to be copied to your GCE VM by following these steps.  
-  -	Verify that your project works, i.e. python manage.py runserver  
-    -	Freeze the environment's requirements, i.e. pip freeze > requirements.txt  
-      -	Remove the virtual environment, i.e. rm -r env  
+  	-	Verify that your project works, i.e. python manage.py runserver  
+    	-	Freeze the environment's requirements, i.e. pip freeze > requirements.txt  
+      	-	Remove the virtual environment, i.e. rm -r env  
         -	Zip your project, i.e. zip -r FirstnameLastnameSiteEnv.zip FirstnameLastnameSiteEnv  
-	7.	With your Google Account, perform the following steps:  
-	  -	Create a project via the Google Developer's Console  
-	    -	Enable the Google Compute Engine API for the project  
-	      -	Add a Debian GCE VM to the project, i.e. gcloud compute instances create djangovm --image debian-7 --zone us-central1-a  
-	        -	Add a firewall rule to allow HTTP traffic, i.e. gcloud compute firewall-rules create allow-http --description "Incoming http allowed." --allow tcp:80  
-		  -	Copy your project over to the VM, i.e. gcloud compute copy-files FirstnameLastnameSiteEnv.zip djangovm:FirstnameLastnameSiteEnv.zip --zone us-central1-a where djangovm is the instance name of your VM.  
-		    -	Log into your VM, i.e. gcloud compute ssh djangovm --zone us-central1-a; then do the following on the VM:  
-		        +	curl -O http://delaunay.ecs.fullerton.edu/debian_gceconf.sh  
-			    +	curl -O http://delaunay.ecs.fullerton.edu/debian_djangopostconf.sh  
-			        +	sudo sh ./debian_gceconf.sh  
-				    +	unzip FirstnameLastnameSiteEnv.zip  
-				        +	cd FirstnameLastnameSiteEnv  
-					    +	virtualenv -p python3 env  
-					        +	source env/bin/activate  
-						    +	pip install -r requirements.txt  
-						        +	cd  
-							    +	sudo sh ./debian_djangopostconf.sh  
-							      -	Visit http://xx.xx.xx.xx/, where xx.xx.xx.xx is your VMs IP address, to confirm that everything worked. If you forgot your VMs IP address you can easily get it with the command gcloud compute instances list.  
+7.	With your Google Account, perform the following steps:  
+	-	Create a project via the Google Developer's Console  
+	-	Enable the Google Compute Engine API for the project  
+	-	Add a Debian GCE VM to the project, i.e. gcloud compute instances create djangovm --image debian-7 --zone us-central1-a  
+	-	Add a firewall rule to allow HTTP traffic, i.e. gcloud compute firewall-rules create allow-http --description "Incoming http allowed." --allow tcp:80  
+	-	Copy your project over to the VM, i.e. gcloud compute copy-files FirstnameLastnameSiteEnv.zip djangovm:FirstnameLastnameSiteEnv.zip --zone us-central1-a where djangovm is the instance name of your VM.  
+	-	Log into your VM, i.e. gcloud compute ssh djangovm --zone us-central1-a; then do the following on the VM:  
+		+	curl -O http://delaunay.ecs.fullerton.edu/debian_gceconf.sh  
+		+	curl -O http://delaunay.ecs.fullerton.edu/debian_djangopostconf.sh  
+		+	sudo sh ./debian_gceconf.sh  
+		+	unzip FirstnameLastnameSiteEnv.zip  
+		+	cd FirstnameLastnameSiteEnv  
+		+	virtualenv -p python3 env  
+		+	source env/bin/activate  
+		+	pip install -r requirements.txt  
+		+	cd  
+		+	sudo sh ./debian_djangopostconf.sh  
+	-	Visit http://xx.xx.xx.xx/, where xx.xx.xx.xx is your VMs IP address, to confirm that everything worked. If you forgot your VMs IP address you can easily get it with the command gcloud compute instances list.  
 
-							      Enter your VMs IP address into the course's online form. Make sure your VM is running between Saturday, December 13 2014 and Tuesday, December 16, 2014.  
+Enter your VMs IP address into the course's online form. Make sure your VM is running between Saturday, December 13 2014 and Tuesday, December 16, 2014.  
 
-							      Your entry in the form must be submitted by December 12, 2014. Submit a zip file of your project (the file you copied onto your GCE VM) to the course drop box system. The zip file submission is due by December 12, 2014 as well.
+Your entry in the form must be submitted by December 12, 2014. Submit a zip file of your project (the file you copied onto your GCE VM) to the course drop box system. The zip file submission is due by December 12, 2014 as well.
 
