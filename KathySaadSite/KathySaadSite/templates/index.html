@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+{% load staticfiles %}
+
+<center>
+<font face="verdana" size="5" color="D8D8D8">
+	Hey. It's Kathy. Here are some cool links you should check out:<br>
+	<body link="808080" vlink="808080" alink="808080" background="static/images/shapes.jpg">
+		1 <a href="{% static 'ResumeCompSci.pdf' %}">Resume</a><br>
+		2 <a href="fortune">Fortune Link 1</a><br>
+		3 <a href="{% url 'index' %}">Fortune Link 2</a><br>
+		4 <a href="https://www.github.com/scienceiscool">GitHub</a><br>
+		5 <a href="https://www.linkedin.com/in/kathysaad">LinkedIn</a><br>
+		6 <a href="http://teapartyintheforest.tumblr.com">Tumblr</a><br>
+	</body>
+</font>
+</center>
+
+</body>
+</html>
